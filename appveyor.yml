@@ -1,4 +1,4 @@
-version: 1.0.0.{build}
+version: 0.9.9.{build}
 
 configuration: Release
 
@@ -28,7 +28,7 @@ test_script:
   - dotnet test .\src\ReverseMarkdown.Test\ReverseMarkdown.Test.csproj --configuration Release
 
 artifacts:
-  - path: '**\ReverseMarkdown.*.nupkg' # find all NuGet packages recursively
+  - path: '**\ReverseMarkdownCQ.*.nupkg' # find all NuGet packages recursively
 
 # deploy:
 #  - provider: NuGet
