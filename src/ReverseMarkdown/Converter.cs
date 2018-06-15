@@ -117,11 +117,15 @@ namespace ReverseMarkdown
 
 		protected IConverter GetDefaultConverter(string tagName)
 		{
-            int count;
-            if (!_defaultedTagCount.TryGetValue(tagName, out count)) count = 0;
-            _defaultedTagCount[tagName] = count + 1;
-            if (CurrentContext != null && !_defaultedTagContext.ContainsKey(tagName))
-                _defaultedTagContext[tagName] = CurrentContext;
+            if (CurrentContext != null)
+            {
+                if (!_defaultedTagCount.TryGetValue(tagName, out int count))
+                {
+                    count = 0;
+                    _defaultedTagContext[tagName] = CurrentContext;
+                }
+                _defaultedTagCount[tagName] = count + 1;
+            }
 			switch (this._config.UnknownTags)
 			{
 				case Config.UnknownTagsOption.PassThrough:
