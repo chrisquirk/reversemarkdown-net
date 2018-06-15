@@ -16,7 +16,7 @@ namespace ReverseMarkdown.Converters
 		public override string Convert(HtmlNode node)
 		{
 			string content = this.TreatChildren(node);
-			return string.Format(" {0} |", content);
+			return string.Format(" {0} |", content.Trim());
 		}
 	}
 }

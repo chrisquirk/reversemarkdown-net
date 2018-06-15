@@ -16,6 +16,10 @@ namespace ReverseMarkdown
         private IConverter _byPassTagsConverter;
         private Config _config;
 
+        private static readonly string _nl = Environment.NewLine;
+        private static readonly string _nlnl = _nl + _nl;
+        private static readonly string _nlnlnl = _nlnl + _nl;
+
 		public Converter()
 			: this(new Config())
 		{
@@ -58,7 +62,25 @@ namespace ReverseMarkdown
 
 			var root = doc.DocumentNode;
 
+            var body = root.SelectSingleNode("//body");
+            if (body != null)
+            {
+                return this.Lookup(body.Name).Convert(body);
+            }
+
 			string result = this.Lookup(root.Name).Convert(root);
+
+            if (Config.CompressNewlines)
+            {
+                int oldlen = result.Length;
+                while (true)
+                {
+                    result = result.Replace(_nlnlnl, _nlnl);
+                    int newlen = result.Length;
+                    if (newlen == oldlen) break;
+                    oldlen = newlen;
+                }
+            }
 
 			return result;
 		}
@@ -78,8 +100,28 @@ namespace ReverseMarkdown
 			return this._converters.ContainsKey(tagName) ? this._converters[tagName] : GetDefaultConverter(tagName);
 		}
 
+        public IEnumerable<KeyValuePair<string, int>> DefaultedTagCounts
+        {
+            get { return _defaultedTagCount; }
+        }
+
+        public string DefaultedTagContext(string tagName)
+        {
+            return _defaultedTagContext[tagName];
+        }
+
+        public string CurrentContext = null;
+
+        protected Dictionary<string, int> _defaultedTagCount = new Dictionary<string, int>();
+        protected Dictionary<string, string> _defaultedTagContext = new Dictionary<string, string>();
+
 		protected IConverter GetDefaultConverter(string tagName)
 		{
+            int count;
+            if (!_defaultedTagCount.TryGetValue(tagName, out count)) count = 0;
+            _defaultedTagCount[tagName] = count + 1;
+            if (CurrentContext != null && !_defaultedTagContext.ContainsKey(tagName))
+                _defaultedTagContext[tagName] = CurrentContext;
 			switch (this._config.UnknownTags)
 			{
 				case Config.UnknownTagsOption.PassThrough:

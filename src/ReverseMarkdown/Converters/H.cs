@@ -21,7 +21,9 @@ namespace ReverseMarkdown.Converters
 
 		public override string Convert(HtmlNode node)
 		{
-			string prefix = new string('#', System.Convert.ToInt32(node.Name.Substring(1)));
+            string prefix = "";
+            if (!Converter.Config.TextNotMarkdown)
+                prefix = new string('#', System.Convert.ToInt32(node.Name.Substring(1)));
 
 			return Environment.NewLine + prefix + " " + this.TreatChildren(node) + Environment.NewLine;
 		}

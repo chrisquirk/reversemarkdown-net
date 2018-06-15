@@ -5,18 +5,19 @@ using HtmlAgilityPack;
 
 namespace ReverseMarkdown.Converters
 {
-    public class Div
-		: ConverterBase
-	{
-		public Div(Converter converter)
+    public class Nav
+        : ConverterBase
+    {
+		public Nav(Converter converter)
 			: base(converter)
 		{
-			this.Converter.Register("div", this);
+			this.Converter.Register("nav", this);
+			this.Converter.Register("menu", this);
 		}
 
 		public override string Convert(HtmlNode node)
 		{
 			return Environment.NewLine + this.TreatChildren(node).Trim() + Environment.NewLine;
 		}
-	}
+    }
 }

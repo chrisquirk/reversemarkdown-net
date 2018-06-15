@@ -20,7 +20,7 @@ namespace ReverseMarkdown.Converters
 			string title = this.ExtractTitle(node);
 			title = title.Length > 0 ? string.Format(" \"{0}\"", title) : "";
 
-			if (href.StartsWith("#") || string.IsNullOrEmpty(href) || string.IsNullOrEmpty(name))
+			if (Converter.Config.TextNotMarkdown || href.StartsWith("#") || string.IsNullOrEmpty(href) || string.IsNullOrEmpty(name))
 			{
 				return name;
 			}

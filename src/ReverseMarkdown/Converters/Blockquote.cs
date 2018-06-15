@@ -19,6 +19,9 @@ namespace ReverseMarkdown.Converters
 		{
 			string content = this.TreatChildren(node).Trim();
 
+            if (this.Converter.Config.TextNotMarkdown)
+                return content;
+
 			// get the lines based on carriage return and prefix "> " to each line
 			var lines = content.ReadLines().Select(item => "> " + item + Environment.NewLine);
 

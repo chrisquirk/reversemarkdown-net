@@ -37,6 +37,7 @@ namespace ReverseMarkdown.Converters
 		}
 
 		public string Treat(HtmlNode node) {
+            if (node is HtmlCommentNode) return "";
 			return this.Converter.Lookup(node.Name).Convert(node);
 		}
 

@@ -5,7 +5,7 @@ using HtmlAgilityPack;
 
 namespace ReverseMarkdown.Converters
 {
-	public class Strong
+    public class Strong
 		: ConverterBase
 	{
 		public Strong(Converter converter)
@@ -13,18 +13,19 @@ namespace ReverseMarkdown.Converters
 		{
 			this.Converter.Register("strong", this);
 			this.Converter.Register("b", this);
+			this.Converter.Register("u", this);
 		}
 
 		public override string Convert(HtmlNode node)
 		{
 			string content = this.TreatChildren(node);
-			if (string.IsNullOrEmpty(content.Trim()) || AlreadyBold(node))
+			if (this.Converter.Config.TextNotMarkdown || string.IsNullOrEmpty(content.Trim()) || AlreadyBold(node))
 			{
 				return content;
 			}
 			else
 			{
-				return "**" + content.Trim() + "**";
+                return "**" + content.Trim() + "**";
 			}
 		}
 

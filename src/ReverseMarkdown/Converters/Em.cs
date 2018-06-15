@@ -5,7 +5,7 @@ using HtmlAgilityPack;
 
 namespace ReverseMarkdown.Converters
 {
-	public class Em
+    public class Em
 		: ConverterBase
 	{
 		public Em(Converter converter)
@@ -18,7 +18,7 @@ namespace ReverseMarkdown.Converters
 		public override string Convert(HtmlNode node)
 		{
 			string content = this.TreatChildren(node);
-			if (string.IsNullOrEmpty(content.Trim()) || AlreadyItalic(node))
+			if (Converter.Config.TextNotMarkdown || string.IsNullOrEmpty(content.Trim()) || AlreadyItalic(node))
 			{
 				return content;
 			}

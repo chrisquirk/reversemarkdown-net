@@ -5,13 +5,13 @@ using HtmlAgilityPack;
 
 namespace ReverseMarkdown.Converters
 {
-    public class Div
+    public class Section
 		: ConverterBase
 	{
-		public Div(Converter converter)
+		public Section(Converter converter)
 			: base(converter)
 		{
-			this.Converter.Register("div", this);
+			this.Converter.Register("section", this);
 		}
 
 		public override string Convert(HtmlNode node)

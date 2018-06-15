@@ -6,7 +6,7 @@ using HtmlAgilityPack;
 
 namespace ReverseMarkdown.Converters
 {
-	public class Li
+    public class Li
 		: ConverterBase
 	{
 		public Li(Converter converter)
@@ -18,6 +18,8 @@ namespace ReverseMarkdown.Converters
 		public override string Convert(HtmlNode node)
 		{
 			string content = this.TreatChildren(node);
+            if (content.Trim().Length == 0)
+                return "";
 			string indentation = IndentationFor(node);
 			string prefix = PrefixFor(node);
 	

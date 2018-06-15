@@ -13,6 +13,7 @@ namespace ReverseMarkdown.Converters
 		{
 			this.Converter.Register("ol", this);
 			this.Converter.Register("ul", this);
+			this.Converter.Register("dl", this);
 		}
 
 		public override string Convert(HtmlNode node)
