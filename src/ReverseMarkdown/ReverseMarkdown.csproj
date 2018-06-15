@@ -3,7 +3,7 @@
     <Description>ReverseMarkdown is a Html to Markdown converter library in c#</Description>
     <VersionPrefix>1.0.0</VersionPrefix>
     <Authors>Babu Annamalai; forked by Chris Quirk</Authors>
-    <TargetFrameworks>net45;net46;netstandard1.6;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net452;net46;netstandard1.6;netstandard2.0</TargetFrameworks>
     <AssemblyName>ReverseMarkdown</AssemblyName>
     <RootNamespace>ReverseMarkdown</RootNamespace>
     <PackageId>ReverseMarkdownCQ</PackageId>

@@ -2,7 +2,7 @@
   <PropertyGroup>
     <RootNamespace>ReverseMarkdown.Test</RootNamespace>
     <AssemblyName>ReverseMarkdown.Test</AssemblyName>
-    <TargetFrameworks>net45;net46;netcoreapp1.0;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks>net452;net46;netcoreapp1.0;netcoreapp2.0</TargetFrameworks>
     <PackageId>ReverseMarkdown.Test</PackageId>
   </PropertyGroup>
   <ItemGroup>
@@ -10,6 +10,12 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.abstractions" Version="2.0.1" />
+    <PackageReference Include="xunit.assert" Version="2.3.1" />
+    <PackageReference Include="xunit.core" Version="2.3.1" />
+    <PackageReference Include="xunit.extensibility.core" Version="2.3.1" />
+    <PackageReference Include="xunit.extensibility.execution" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.console" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
   </ItemGroup>
