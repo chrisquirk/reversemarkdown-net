@@ -287,7 +287,7 @@ namespace ReverseMarkdown.Test
             var config = new Config(Config.UnknownTagsOption.Bypass);
             var converter = new Converter(config);
             var result = converter.Convert(html);
-            Assert.Equal<string>(expected, result);
+            Assert.True(string.CompareOrdinal(expected, result) == 0);
         }
 
         [Fact]
@@ -298,7 +298,7 @@ namespace ReverseMarkdown.Test
             var config = new Config(Config.UnknownTagsOption.Drop);
             var converter = new Converter(config);
             var result = converter.Convert(html);
-            Assert.Equal<string>(expected, result);
+            Assert.True(string.CompareOrdinal(expected, result) == 0);
         }
 
         [Fact]
@@ -309,7 +309,7 @@ namespace ReverseMarkdown.Test
             var config = new Config(Config.UnknownTagsOption.PassThrough);
             var converter = new Converter(config);
             var result = converter.Convert(html);
-            Assert.Equal<string>(expected, result);
+            Assert.True(string.CompareOrdinal(expected, result) == 0);
         }
 
         [Fact]
@@ -335,7 +335,7 @@ namespace ReverseMarkdown.Test
             var config = new Config(Config.UnknownTagsOption.Drop);
 			var converter = new Converter();
 			var result = converter.Convert(html);
-			Assert.Equal<string>(expected, result);
+            Assert.True(string.CompareOrdinal(expected, result) == 0);
 		}
 	}
 }
